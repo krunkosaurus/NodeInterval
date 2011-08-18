@@ -1,0 +1,94 @@
+:                  _      _       _                       _
+:  _ __   ___   __| | ___(_)_ __ | |_ ___ _ ____   ____ _| |
+: | '_ \ / _ \ / _` |/ _ \ | '_ \| __/ _ \ '__\ \ / / _` | |
+: | | | | (_) | (_| |  __/ | | | | ||  __/ |   \ V / (_| | |
+: |_| |_|\___/ \__,_|\___|_|_| |_|\__\___|_|    \_/ \__,_|_|
+:
+: Automation for lazy people.
+
+* What it does
+
+When ran, Nodeinterval watches a directory of files for changes. When it detects
+a change it concats all the files in the directory and inserts them into a
+specific area of a chosen document.
+
+The most common example is separating out your template files in a [[http://documentcloud.github.com/backbone/][backbone.js]]
+app so that they are out of your html page and into organized folders. Think
+of it as a simple version of [[http://sass-lang.com/][Sass]] for your JavaScript templates.
+
+* Features
+
+1. Works with all templating solutions including [[http://documentcloud.github.com/underscore/][underscore.js]] and [[http://api.jquery.com/category/plugins/templates/][jQuery templates]].
+2. Profiles the time it takes to render all the templates.
+3. Date-stamped, clean, and color-coded command-line output:
+
+: $ node nodeinterval.js
+: 18 Aug 01:47:49 - INFO: NodeInterval is watching for changes. Press Ctrl-C to stop.
+: 18 Aug 01:47:49 - INFO: overwrite ../src/html/index.html
+: 18 Aug 01:47:49 - INFO: Completed in 0.001 seconds.
+: 18 Aug 01:48:04 - INFO: >>> Change detected to: ~/git/projectName/src/html/templates/signon/signon.tmpl
+: 18 Aug 01:48:04 - INFO: overwrite ../src/html/index.html
+: 18 Aug 01:48:04 - INFO: Completed in 0.002 seconds.
+
+* To install
+
+:    npm install nodeinterval
+
+or clone this repo.
+
+* Usage
+: var NodeInterval = require('nodeinterval');
+: var nodeInterval = new NodeInterval({
+:    watchFolder: '../src/html/templates/',
+:    inputFile: '../src/html/index.html',
+:    replacementString: '@templates@',
+:    outputFile: '../assets/index.html'
+:});
+
+Where:
+
+| option              | description                                                                                                                                                  |
+|---------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| =watchFolder=       | is the relative or absolute path to the folder you want to monitor.                                                                                          |
+| =inputFile=         | is the main template you want to duplicate.                                                                                                                  |
+| =replacementString= | is the string inside of =inputFile= that you want to replace with all your templates.                                                                        |
+| =outputFile=        | is the relative or absolute path to the file you want to create (that's a copy of =inputFile= with the =replacementString= replaced with all your templates. |
+
+* Sample folder layout:
+
+: .
+: ├── assets               <== Your raw assets.
+: │   ├── images
+: │   ├── index.html       <== "Built" html file with your rendered templates.
+: │   ├── js               <== Compressed assets.
+: │   └── css
+: ├── bin
+: │   ├── node_modules
+: │   │   └── nodeinterval
+: │   ├── nodeinterval.js
+: │   └── sasswatch.sh
+: └── src
+:     └── html
+:         ├── index.html   <== Raw index.html files with =replacementString= where you want the templates.
+:         ├── css          <== Uncompressed CSS assets.
+:         ├── js           <== Uncompressed JS assets.
+:         └── templates
+
+* Requirements:
+
+You must have [[http://nodejs.org/][Node.js]] installed in your path. [[http://npmjs.org/][NPM]] (Node package Manager) if you
+want to install this package using it.
+
+Internally NodeInterval uses the following (included) node packages:
+[[https://github.com/DelvarWorld/Simple-Node-Logger][Simple-Node-Logger]], [[https://github.com/jorritd/node-watch][node-watch]], and [[https://github.com/documentcloud/underscore][underscore]].
+
+* Future plans:
+
+1. Add and remove events. Currently NodeInterval only supports listening for
+  changes. In the future it will also listen for adding and removing of templates.
+2.
+3. JS compression. Include [[https://github.com/mishoo/UglifyJS][UglifyJS]] to optionally auto-compress and concat JS
+  files in addition to templates. Note that we don't plan on compressing
+  templates as they can contain a combination of HTML/CSS/JS and
+  template-library-specific shorthand that a normal compressor wouldn't
+  understand.

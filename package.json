@@ -1,0 +1,14 @@
+{
+  "name": "NodeInterval",
+  "author": "Mauvis Ledford",
+  "description": "A tool for watching a directory of files and concatenating them into the specific location of a separate document.",
+  "version": "0.0.1",
+  "homepage": "http://brainswap.me",
+  "engines" : {"node" : ">=0.4.0"},
+  "main" : "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krunkosaurus/NodeInterval"
+  }
+}
+
