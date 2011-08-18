@@ -2,10 +2,15 @@
   "name": "nodeinterval",
   "author": "Mauvis Ledford",
   "description": "A tool for watching a directory of files and concatenating them into the specific location of a separate document. Perfect for backbone.js or spine.js templates.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "http://brainswap.me",
   "engines" : {"node" : ">=0.4.0"},
   "main" : "index.js",
+  "dependencies": {
+    "nodewatch": ">= 0.0.4",
+    "simple-logger": ">= 0.0.1",
+    "underscore": ">= 1.1.7"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/krunkosaurus/NodeInterval"
