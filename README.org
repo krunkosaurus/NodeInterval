@@ -10,11 +10,12 @@
 
 When ran, Nodeinterval watches a directory of files for changes. When it detects
 a change it concats all the files in the directory and inserts them into a
-specific area of a chosen document.
+specific area of a chosen document. Leave NodeInterval running in a seperate tab
+as you work on your project.
 
 The most common example is separating out your template files in a [[http://documentcloud.github.com/backbone/][backbone.js]]
-app so that they are out of your html page and into organized folders. Think
-of it as a simple version of [[http://sass-lang.com/][Sass]] for your JavaScript templates.
+or [[http://maccman.github.com/spine/][spine.js]] app so that templates are out of your html page and into organized
+folders. Think of it as a simple version of [[http://sass-lang.com/][Sass]] for your JavaScript templates.
 
 * Features
 
