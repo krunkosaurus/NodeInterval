@@ -24,10 +24,10 @@ of it as a simple version of [[http://sass-lang.com/][Sass]] for your JavaScript
 
 : $ node nodeinterval.js
 : 18 Aug 01:47:49 - INFO: NodeInterval is watching for changes. Press Ctrl-C to stop.
-: 18 Aug 01:47:49 - INFO: overwrite ../src/html/index.html
+: 18 Aug 01:47:49 - INFO: overwrite ../assets/index.html
 : 18 Aug 01:47:49 - INFO: Completed in 0.001 seconds.
 : 18 Aug 01:48:04 - INFO: >>> Change detected to: ~/git/projectName/src/html/templates/signon/signon.tmpl
-: 18 Aug 01:48:04 - INFO: overwrite ../src/html/index.html
+: 18 Aug 01:48:04 - INFO: overwrite ../assets/index.html
 : 18 Aug 01:48:04 - INFO: Completed in 0.002 seconds.
 
 * To install
@@ -47,7 +47,7 @@ or clone this repo.
 
 Where:
 
-| option              | description                                                                                                                                                  |
+| Option              | Description                                                                                                                                                  |
 |---------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | =watchFolder=       | is the relative or absolute path to the folder you want to monitor.                                                                                          |
 | =inputFile=         | is the main template you want to duplicate.                                                                                                                  |
@@ -69,7 +69,7 @@ Where:
 : │   └── sasswatch.sh
 : └── src
 :     └── html
-:         ├── index.html   <== Raw index.html files with =replacementString= where you want the templates.
+:         ├── index.html   <== Raw index.html files with "replacementString" where you want the templates.
 :         ├── css          <== Uncompressed CSS assets.
 :         ├── js           <== Uncompressed JS assets.
 :         └── templates
@@ -86,7 +86,7 @@ Internally NodeInterval uses the following (included) node packages:
 
 1. Add and remove events. Currently NodeInterval only supports listening for
   changes. In the future it will also listen for adding and removing of templates.
-2.
+2. A polling interval option.
 3. JS compression. Include [[https://github.com/mishoo/UglifyJS][UglifyJS]] to optionally auto-compress and concat JS
   files in addition to templates. Note that we don't plan on compressing
   templates as they can contain a combination of HTML/CSS/JS and
