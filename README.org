@@ -34,9 +34,23 @@ folders. Think of it as a simple version of [[http://sass-lang.com/][Sass]] for 
 
 * To install
 
+There are two ways to install.
+
+1. npm method:
+
 :    npm install nodeinterval
 
-or clone this repo.
+For those new to npm, this will create a =node_modules= directory with the
+module and it's dependencies. From here you can use one of the sample scripts in
+the samples directory. Edit it to adjust to your folder structure, make it
+executable, then run it.
+
+2. git method
+
+Clone this repo.
+
+If you don't have a nice appliction folder architecture check the section below
+titled "Sample web application layout".
 
 * Usage
 : var NodeInterval = require('nodeinterval');
@@ -56,25 +70,34 @@ Where:
 | =replacementString= | is the string inside of =inputFile= that you want to replace with all your templates.                                                                        |
 | =outputFile=        | is the relative or absolute path to the file you want to create (that's a copy of =inputFile= with the =replacementString= replaced with all your templates. |
 
-* Sample folder layout:
+* Sample web application layout:
+
+If you don't have a good web application layout. Here's a good one to follow:
 
 : .
-: ├── assets               <== Your raw assets.
+: ├── assets               <== Your compressed assets, ready for production.
 : │   ├── images
 : │   ├── index.html       <== "Built" html file with your rendered templates.
-: │   ├── js               <== Compressed assets.
+: │   ├── js
 : │   └── css
-: ├── bin
-: │   ├── node_modules
-: │   │   └── nodeinterval
-: │   ├── nodeinterval.js
-: │   └── sasswatch.sh
-: └── src
-:     └── html
-:         ├── index.html   <== Raw index.html files with "replacementString" where you want the templates.
-:         ├── css          <== Uncompressed CSS assets.
-:         ├── js           <== Uncompressed JS assets.
-:         └── templates
+: ├── bin                  <== Shell scripts. "npm install nodeinterval" here.
+: │   ├── node_modules     <== This folder will automatically be created.
+: │   │   └── nodeinterval <== nodeinterval and it's dependencies will be
+: │   │                        installed here.
+: │   ├── nodeinterval.sh  <== This sample file (and the .js) version is inside
+: │   │                        of nodeinterval/samples/. Use it if you like.
+: │   └── sasswatch.sh     <== I like to create a Sass executable for watching
+: │                            my CSS files.
+: └── src                  <== Raw uncompressed code here, where you should be
+:     │                        editing your codez.
+:     ├── index.html       <== Raw index.html files with "replacementString"
+:     │                        where you want the templates.
+:     ├── css              <== Uncompressed CSS assets.
+:     ├── js               <== Uncompressed JS assets.
+:     └── templates        <== Your .js templates. These can be all in one
+:                              folder or seperated out into many folder deep,
+:                              according to section. Incude the <script> part
+:                              in your templates.
 
 * Requirements:
 
