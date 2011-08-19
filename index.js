@@ -7,9 +7,14 @@ function NodeInterval(options){
     var that = this;
     _(this).extend(options);
 
+    // TODO: We should store the current set of files in an array for future
+    // comparing.
     _.each(this.getFilesFrom(this.watchFolder), function(file){
         watch.add(file);
     });
+    // Also watch the input file for changes.
+    // TODO: If inputFile changes, unwatch removed file, or watch new file.
+    watch.add(options.inputFile);
 
     // Start the watch change listener.
     watch.onChange(function(file, prevTime, currTime){
