@@ -71,7 +71,7 @@ Where:
 | =replacementString= | is the string inside of =inputFile= that you want to replace with all your templates.                                                                        |
 | =outputFile=        | is the relative or absolute path to the file you want to create (that's a copy of =inputFile= with the =replacementString= replaced with all your templates. |
 
-* Sample web application layout:
+* Sample web application layout
 
 If you don't have a good web application layout. Here's a good one to follow:
 
@@ -100,18 +100,18 @@ If you don't have a good web application layout. Here's a good one to follow:
 :                              according to section. Incude the <script> part
 :                              in your templates.
 
-* Thanks:
+* Thanks
 
 Internally NodeInterval uses the following (included) node packages:
 [[https://github.com/DelvarWorld/Simple-Node-Logger][Simple-Node-Logger]], [[https://github.com/jorritd/node-watch][node-watch]], and [[https://github.com/documentcloud/underscore][underscore]].
 
-* Contribute:
+* Contribute
 
 Feedback and contributions (via pull requests) are more than welcome.
 NodeInterval is really young and mostly written in one night. I'll be updating
 it with features as I use it in my daily projects.
 
-* Future plans:
+* Future plans
 
 1. Add and remove events. Currently NodeInterval only supports listening for
   changes. In the future it will also listen for adding and removing of templates.
