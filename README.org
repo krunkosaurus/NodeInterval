@@ -32,8 +32,9 @@ folders. Think of it as a simple version of [[http://sass-lang.com/][Sass]] for 
 : 18 Aug 01:48:04 - INFO: overwrite ../assets/index.html
 : 18 Aug 01:48:04 - INFO: Completed in 0.002 seconds.
 
-* Dependencies
+* Requirements
 - You must have [[http://nodejs.org/][nodejs]] installed.
+- [[http://npmjs.org/][NPM]] (Node package Manager) if you want to install this package using it.
 * To install
 
 There are two ways to install. Cloning this repo or using [[http://npmjs.org/][npm]]. Once you have the
@@ -98,11 +99,6 @@ If you don't have a good web application layout. Here's a good one to follow:
 :                              folder or seperated out into many folder deep,
 :                              according to section. Incude the <script> part
 :                              in your templates.
-
-* Requirements:
-
-You must have [[http://nodejs.org/][Nodejs]] installed. [[http://npmjs.org/][NPM]] (Node package Manager) if you want to
-install this package with it.
 
 * Thanks:
 
