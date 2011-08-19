@@ -8,9 +8,9 @@
 
 * What it does
 
-When ran, Nodeinterval watches a directory of files for changes. When it detects
-a change it concats all the files in the directory and inserts them into a
-specific area of a chosen document. Leave NodeInterval running in a seperate tab
+When ran, NodeInterval watches a directory of files for changes. When it detects
+a change it concats all the files in that directory and inserts them into a
+specific area in a chosen document. Leave NodeInterval running in a seperate tab
 as you work on your project.
 
 The most common example is separating out your template files in a [[http://documentcloud.github.com/backbone/][backbone.js]]
@@ -32,25 +32,25 @@ folders. Think of it as a simple version of [[http://sass-lang.com/][Sass]] for 
 : 18 Aug 01:48:04 - INFO: overwrite ../assets/index.html
 : 18 Aug 01:48:04 - INFO: Completed in 0.002 seconds.
 
+* Dependencies
+- You must have [[http://nodejs.org/][nodejs]] installed.
 * To install
 
-There are two ways to install.
+There are two ways to install. Cloning this repo or using [[http://npmjs.org/][npm]]. Once you have the
+package installed feel free to modify and use the sample script from the
+=samples= directory:
 
-1. npm method:
-
+:    cd bin # Your scripts directory.
 :    npm install nodeinterval
+:    cp node_modules/nodeinterval/samples/nodeinterval.sh .
+:    emacs nodeinterval.sh # Setup your variable paths with your favorite editor.
+:    chmod u+x nodeinterval.sh
+:    ./nodeinterval.sh
 
-For those new to npm, this will create a =node_modules= directory with the
-module and it's dependencies. From here you can use one of the sample scripts in
-the samples directory. Edit it to adjust to your folder structure, make it
-executable, then run it.
+Alternatively, you can use the .js sample file instead of the .sh version and
+run like so:
 
-2. git method
-
-Clone this repo.
-
-If you don't have a nice appliction folder architecture check the section below
-titled "Sample web application layout".
+: node nodeinterval.js
 
 * Usage
 : var NodeInterval = require('nodeinterval');
@@ -87,7 +87,7 @@ If you don't have a good web application layout. Here's a good one to follow:
 : │   ├── nodeinterval.sh  <== This sample file (and the .js) version is inside
 : │   │                        of nodeinterval/samples/. Use it if you like.
 : │   └── sasswatch.sh     <== I like to create a Sass executable for watching
-: │                            my CSS files.
+: │                            my CSS files. (not part of this project)
 : └── src                  <== Raw uncompressed code here, where you should be
 :     │                        editing your codez.
 :     ├── index.html       <== Raw index.html files with "replacementString"
