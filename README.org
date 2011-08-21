@@ -28,7 +28,7 @@ folders. Think of it as a simple version of [[http://sass-lang.com/][Sass]] for 
 : 18 Aug 01:47:49 - INFO: NodeInterval is watching for changes. Press Ctrl-C to stop.
 : 18 Aug 01:47:49 - INFO: overwrite ../assets/index.html
 : 18 Aug 01:47:49 - INFO: Completed in 0.001 seconds.
-: 18 Aug 01:48:04 - INFO: >>> Change detected to: ~/git/projectName/src/html/templates/signon/signon.tmpl
+: 18 Aug 01:48:04 - INFO: >>> Change detected to: ~/git/projectName/src/templates/signon/signon.tmpl
 : 18 Aug 01:48:04 - INFO: overwrite ../assets/index.html
 : 18 Aug 01:48:04 - INFO: Completed in 0.002 seconds.
 
@@ -56,8 +56,8 @@ run like so:
 * Usage
 : var NodeInterval = require('nodeinterval');
 : var nodeInterval = new NodeInterval({
-:    watchFolder: '../src/html/templates/',
-:    inputFile: '../src/html/index.html',
+:    watchFolder: '../src/templates/',
+:    inputFile: '../src/index.html',
 :    replacementString: '@templates@',
 :    outputFile: '../assets/index.html'
 :});
