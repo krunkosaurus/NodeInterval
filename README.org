@@ -9,9 +9,9 @@
 * What it does
 
 When ran, NodeInterval watches a directory of files for changes. When it detects
-a change it concats all the files in that directory and inserts them into a
-specific area in a chosen document. Leave NodeInterval running in a seperate tab
-as you work on your project.
+a change it concats all the files together and inserts them into a specific area
+of a chosen document. Leave NodeInterval running in a seperate tab as you work
+on your project.
 
 The most common example is separating out your template files in a [[http://documentcloud.github.com/backbone/][backbone.js]]
 or [[http://maccman.github.com/spine/][spine.js]] app so that templates are out of your html page and into organized
@@ -28,7 +28,7 @@ folders. Think of it as a simple version of [[http://sass-lang.com/][Sass]] for 
 : 18 Aug 01:47:49 - INFO: NodeInterval is watching for changes. Press Ctrl-C to stop.
 : 18 Aug 01:47:49 - INFO: overwrite ../assets/index.html
 : 18 Aug 01:47:49 - INFO: Completed in 0.001 seconds.
-: 18 Aug 01:48:04 - INFO: >>> Change detected to: ~/git/projectName/src/html/templates/signon/signon.tmpl
+: 18 Aug 01:48:04 - INFO: >>> Change detected to: ~/git/projectName/src/templates/signon/signon.tmpl
 : 18 Aug 01:48:04 - INFO: overwrite ../assets/index.html
 : 18 Aug 01:48:04 - INFO: Completed in 0.002 seconds.
 
@@ -55,6 +55,7 @@ run it like so:
 : node nodeinterval.js
 
 * Usage
+
 : var Nodeinterval = require('nodeinterval'),
 : ni = new Nodeinterval.Watcher({
 :     inputFile: '../path/to/raw/index.html',
