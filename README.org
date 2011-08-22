@@ -73,12 +73,12 @@ Options you can pass to =new Nodeinterval.Watcher= are:
 | =replacementString= | is the string inside of =inputFile= that you want to replace with all your templates.                                                                        | '@templates@'          |
 | =watchFolder=       | is the relative or absolute path to the folder you want to monitor.                                                                                          | '../src/templates/'    |
 
-Once a new =new Nodeinterval.Watcher= is created. It has the additional api methods:
+Once a new =Nodeinterval.Watcher= is created. It has the additional api methods:
 
 | Method      | Description                                                                                                            |
 |-------------+------------------------------------------------------------------------------------------------------------------------|
-| startWatch  | All files in =watchFoler= are now being watched.                                                                       |
-| stopWatch   | All files in =watchFoler= are now not being watched.                                                                   |
+| startWatch  | All files in =watchFolder= are now being watched.                                                                      |
+| stopWatch   | All files in =watchFolder= are now not being watched.                                                                  |
 | updateIndex | Force =outputFile= to be refreshed with =inputFile=, with =replacementString= replaced with contents of =watchFolder=. |
 
 * Sample web application layout
@@ -111,12 +111,12 @@ If you don't have a good web application layout. Here's a good one to follow:
 :                              in your templates.
 
 * Change log
-- 2011-08-18 - 0.0.1 - First version
-- 2011-08-22 - 0.0.4 -
-  - Added improved way of instantiating (new NodeInterval.Watcher), see updated doc.
-  - Added init defaults, see updated doc.
+- 2011-08-22 - 0.0.4
+  - Added improved way of instantiating (new NodeInterval.Watcher), see docs.
+  - Added init defaults if you don't pass them.
   - New APIs: .startWatch, .stopWatch
   - Added [[http://vowsjs.org/][Vows]] unit tests..
+- 2011-08-18 - 0.0.1 - First version
 * Thanks
 
 Internally NodeInterval uses the following (included) node packages:
@@ -124,7 +124,8 @@ Internally NodeInterval uses the following (included) node packages:
 
 * Contribute
 
-Feedback and contributions (via pull requests) are more than welcome.
-NodeInterval is really young and mostly written in one night. I'll be updating
-it with features as I use it in my daily projects.
+Feedback and contributions (via pull requests) are more than welcome. Please add
+a test to the unit tests if it's a new feature. NodeInterval is really young and
+mostly written in one night. I'll be updating it with features as I use it in my
+daily projects.
 
