@@ -1,8 +1,8 @@
 {
   "name": "nodeinterval",
   "author": "Mauvis Ledford",
-  "description": "A tool for watching a directory of files and concatenating them into the specific location of a separate document. Perfect for backbone.js or spine.js templates.",
-  "version": "0.0.2",
+  "description": "Command-line watch utility for managing and concatenating files into a document. Particularly useful for Backbone.js / Spine.js templates.",
+  "version": "0.0.4",
   "homepage": "http://brainswap.me",
   "engines" : {"node" : ">=0.4.0"},
   "main" : "index.js",

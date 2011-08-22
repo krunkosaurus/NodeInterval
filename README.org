@@ -37,39 +37,48 @@ folders. Think of it as a simple version of [[http://sass-lang.com/][Sass]] for 
 - [[http://npmjs.org/][NPM]] (Node package Manager) if you want to install this package using it.
 * To install
 
-There are two ways to install. Cloning this repo or using [[http://npmjs.org/][npm]]. Once you have the
-package installed feel free to modify and use the sample script from the
-=samples= directory:
+There are two ways to install. Cloning this repo or using [[http://npmjs.org/][npm]]. If you want to
+run the unit tests, you must clone this repo. Once you have the package
+installed feel free to modify and use the sample script in the =samples=
+directory:
 
 :    cd bin # Your scripts directory.
 :    npm install nodeinterval
 :    cp node_modules/nodeinterval/samples/nodeinterval.sh .
 :    emacs nodeinterval.sh # Setup your variable paths with your favorite editor.
 :    chmod u+x nodeinterval.sh
-:    ./nodeinterval.sh
+:    ./nodeinterval.sh # Start watching your files
 
-Alternatively, you can use the .js sample file instead of the .sh version and
-run like so:
+Alternatively, you can use the sample .js file instead of the .sh version and
+run it like so:
 
 : node nodeinterval.js
 
 * Usage
-: var NodeInterval = require('nodeinterval');
-: var nodeInterval = new NodeInterval({
-:    watchFolder: '../src/html/templates/',
-:    inputFile: '../src/html/index.html',
-:    replacementString: '@templates@',
-:    outputFile: '../assets/index.html'
-:});
+: var Nodeinterval = require('nodeinterval'),
+: ni = new Nodeinterval.Watcher({
+:     inputFile: '../path/to/raw/index.html',
+:     outputFile: '../path/to/rendered/index.html',
+:     replacementString: '@templates@',
+:     watchFolder: '../path/to/templates/'
+: }).startWatch();
 
-Where:
+Options you can pass to =new Nodeinterval.Watcher= are:
 
-| Option              | Description                                                                                                                                                  |
-|---------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| =watchFolder=       | is the relative or absolute path to the folder you want to monitor.                                                                                          |
-| =inputFile=         | is the main template you want to duplicate.                                                                                                                  |
-| =replacementString= | is the string inside of =inputFile= that you want to replace with all your templates.                                                                        |
-| =outputFile=        | is the relative or absolute path to the file you want to create (that's a copy of =inputFile= with the =replacementString= replaced with all your templates. |
+| Option              | Description                                                                                                                                                  | default                |
+|---------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------|
+| =inputFile=         | is the main template you want to duplicate.                                                                                                                  | '../src/index.html'    |
+| =outputFile=        | is the relative or absolute path to the file you want to create (that's a copy of =inputFile= with the =replacementString= replaced with all your templates. | '../assets/index.html' |
+| =replacementString= | is the string inside of =inputFile= that you want to replace with all your templates.                                                                        | '@templates@'          |
+| =watchFolder=       | is the relative or absolute path to the folder you want to monitor.                                                                                          | '../src/templates/'    |
+
+Once a new =new Nodeinterval.Watcher= is created. It has the additional api methods:
+
+| Method      | Description                                                                                                            |
+|-------------+------------------------------------------------------------------------------------------------------------------------|
+| startWatch  | All files in =watchFoler= are now being watched.                                                                       |
+| stopWatch   | All files in =watchFoler= are now not being watched.                                                                   |
+| updateIndex | Force =outputFile= to be refreshed with =inputFile=, with =replacementString= replaced with contents of =watchFolder=. |
 
 * Sample web application layout
 
@@ -100,6 +109,13 @@ If you don't have a good web application layout. Here's a good one to follow:
 :                              according to section. Incude the <script> part
 :                              in your templates.
 
+* Change log
+- 2011-08-18 - 0.0.1 - First version
+- 2011-08-22 - 0.0.4 -
+  - Added improved way of instantiating (new NodeInterval.Watcher), see updated doc.
+  - Added init defaults, see updated doc.
+  - New APIs: .startWatch, .stopWatch
+  - Added [[http://vowsjs.org/][Vows]] unit tests..
 * Thanks
 
 Internally NodeInterval uses the following (included) node packages:
@@ -111,13 +127,3 @@ Feedback and contributions (via pull requests) are more than welcome.
 NodeInterval is really young and mostly written in one night. I'll be updating
 it with features as I use it in my daily projects.
 
-* Future plans
-
-1. Add and remove events. Currently NodeInterval only supports listening for
-  changes. In the future it will also listen for adding and removing of templates.
-2. A polling interval option.
-3. JS compression. Include [[https://github.com/mishoo/UglifyJS][UglifyJS]] to optionally auto-compress and concat JS
-  files in addition to templates. Note that we don't plan on compressing
-  templates as they can contain a combination of HTML/CSS/JS and
-  template-library-specific shorthand that a normal compressor wouldn't
-  understand.
