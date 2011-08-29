@@ -1,5 +1,5 @@
 {
-  "name": "nodeinterval",
+  "name": "NodeInterval",
   "author": "Mauvis Ledford",
   "description": "Command-line watch utility for managing and concatenating files into a document. Particularly useful for Backbone.js / Spine.js templates.",
   "version": "0.0.4",
