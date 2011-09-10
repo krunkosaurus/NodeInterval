@@ -1,5 +1,5 @@
-var Nodeinterval = require('nodeinterval'),
-ni = new Nodeinterval.Watcher({
+var NodeInterval = require('nodeinterval'),
+ni = new NodeInterval.Watcher({
     watchFolder: '../src/templates/',
     inputFile: '../src/html/index.html',
     replacementString: '@templates@',
