@@ -1,4 +1,4 @@
-#!/usr/local/bin/node
+#!/usr/bin/env node
 var NodeInterval = require('nodeinterval'),
 ni = new NodeInterval.Watcher({
     watchFolder: '../src/templates/',
