@@ -1,8 +1,8 @@
 {
   "name": "NodeInterval",
   "author": "Mauvis Ledford",
-  "description": "Command-line watch utility for managing and concatenating files into a document. Particularly useful for Backbone.js / Spine.js templates.",
-  "version": "0.0.4",
+  "description": "Command-line watch utility for managing and concatenating templates into a webpage. Particularly useful for Backbone.js / Spine.js templates.",
+  "version": "0.0.6",
   "homepage": "http://brainswap.me",
   "engines" : {"node" : ">=0.4.0"},
   "main" : "index.js",

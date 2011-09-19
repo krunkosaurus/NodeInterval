@@ -8,7 +8,7 @@
 
 * What it does
 
-When ran, NodeInterval watches a directory of templates for changes. When it
+When ran, NodeInterval watches a directory of js templates for changes. When it
 detects a change it concats all the templates together and inserts them into a
 specific area of a chosen webpage. Leave NodeInterval running in a seperate tab
 as you work on your project.
@@ -19,15 +19,12 @@ your html page and into organized folders.
 
 Think of it as a simple version of [[http://sass-lang.com/][Sass]] for your JavaScript templates.
 
-NodeInterval can also be used generically to concat any type of file into any
-time of document.
-
 * Features
 
-1. Works with all templating solutions including [[http://documentcloud.github.com/underscore/][underscore.js]] and [[http://api.jquery.com/category/plugins/templates/][jQuery templates]].
+1. Works with all templating solutions including [[http://documentcloud.github.com/underscore/][underscore.js]] and [[http://api.jquery.com/category/plugins/templates/][jQuery templates]]. (The only requirement is that the template needs to have an id property.)
 2. Hidden files (files that begin with "." like .git, .svn, and .DS_Store) are automatically ignored in template directories.
 3. Profiles the time it takes to render all templates.
-4. Supports watching multiple sets of input and output files. 
+4. Supports watching multiple sets of input and output files.
 5. Clean, date-stamped, and color-coded command-line output:
 : $ node nodeinterval.js
 : 18 Aug 01:47:49 - INFO: NodeInterval is watching for changes. Press Ctrl-C to stop.
@@ -118,7 +115,9 @@ If you don't have a good web application layout. Here's a good one to follow:
 :                              in your templates.
 
 * Change log
-- 2011-08-22 - 0.0.5
+- 2011-09-18 - 0.0.6
+  - Templates are now outputted in alphabetical order by script id. This adds consistency to commit diffs among other things.
+- 2011-09-18 - 0.0.5
   - Now supports watching multiple set of input and output files (use an array under =inputFile= and =outputFile=.
 - 2011-08-22 - 0.0.4
   - Added improved way of instantiating (new NodeInterval.Watcher), see docs.
