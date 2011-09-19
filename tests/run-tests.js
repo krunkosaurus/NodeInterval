@@ -72,6 +72,7 @@ function init(){
         'Editing a file': {
             topic: function(){
                 var that = this;
+                console.log('making file edit...');
                 fs.writeFileSync(watchFolder + 'template01.tmpl', randomString, 'utf8');
                 // Wait a few secs and check that ni updated the file.
                 setTimeout(function(){
@@ -79,10 +80,12 @@ function init(){
                 } ,8000);
             },
             'Assert concatinated output file has new changes.': function(topic){
+                console.log('checking change...');
                 var topic = fs.readFileSync(outputFile, 'utf8')
                 assert.isTrue(!!topic.match(randomString));
 
                 // Revert change
+                console.log('Tests done. Reverting changes...');
                 fs.writeFileSync(watchFolder + 'template01.tmpl', '<script type="text/template" id="template-01">\n\tThis is my template 01.\n</script>', 'utf8');
             }
         }

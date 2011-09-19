@@ -18,7 +18,13 @@ var fs = require('fs'),
         });
         // Also watch the input file for changes.
         // TODO: If inputFile changes, unwatch removed file, or watch new file.
-        watch.add(options.inputFile);
+        if (options.inputFile instanceof Array){
+            _.each(options.inputFile, function(file){
+                watch.add(file);
+            });
+        }else{
+            watch.add(options.inputFile);
+        }
 
         // Start the watch change listener.
         watch.onChange(function(file, prevTime, currTime){
@@ -110,9 +116,24 @@ var fs = require('fs'),
             var date = new Date();
             var filesAr = this.getFilesFrom(this.watchFolder);
             var content = this.stringFromFiles(filesAr);
-            var template = this.getFileContents(this.inputFile);
-            template = template.replace(this.replacementString, content);
-            this.writeToFile(this.outputFile, template);
+            var template;
+            var i;
+
+            if (this.outputFile instanceof Array){
+                for (i = 0; i < this.outputFile.length; i++){
+                    template = this.getFileContents(this.inputFile[i]);
+                    template = template.replace(this.replacementString, content);
+
+                    this.writeToFile(this.outputFile[i], template);
+                }
+            }else{
+                template = this.getFileContents(this.inputFile);
+                template = template.replace(this.replacementString, content);
+
+                this.writeToFile(this.outputFile, template);
+            }
+
+
             log.info('Completed in ' + ((new Date() - date) / 1000) + ' seconds.');
         }
     });
