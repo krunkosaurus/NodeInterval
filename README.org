@@ -45,7 +45,7 @@ installed feel free to modify and use the sample script in the =samples=
 directory:
 
 :    cd bin # Your scripts directory.
-:    npm install nodeinterval
+:    npm install NodeInterval
 :    cp node_modules/nodeinterval/samples/nodeinterval.sh .
 :    emacs nodeinterval.sh # Setup your variable paths with your favorite editor.
 :    chmod u+x nodeinterval.sh
