@@ -14,7 +14,7 @@ replacementString = '@templates@',
 outputFile =  'assets/index.html';
 
 // Test variables:
-var randomString = 'Hi there ' +(+ new Date),
+var randomString = 'Hi there id="bob"  ' +(+ new Date),
 testFile1 = watchFolder + 'template01.tmpl',
 testFile2 = watchFolder + 'dir_level_2/dir_level_3/template09.tmpl';
 
