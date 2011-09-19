@@ -27,15 +27,15 @@ time of document.
 1. Works with all templating solutions including [[http://documentcloud.github.com/underscore/][underscore.js]] and [[http://api.jquery.com/category/plugins/templates/][jQuery templates]].
 2. Hidden files (files that begin with "." like .git, .svn, and .DS_Store) are automatically ignored in template directories.
 3. Profiles the time it takes to render all templates.
-4. Clean, date-stamped, and color-coded command-line output:
-        : $ node nodeinterval.js
-        : 18 Aug 01:47:49 - INFO: NodeInterval is watching for changes. Press Ctrl-C to stop.
-        : 18 Aug 01:47:49 - INFO: overwrite ../assets/index.html
-        : 18 Aug 01:47:49 - INFO: Completed in 0.001 seconds.
-        : 18 Aug 01:48:04 - INFO: >>> Change detected to: ~/git/projectName/src/templates/signon/signon.tmpl
-        : 18 Aug 01:48:04 - INFO: overwrite ../assets/index.html
-        : 18 Aug 01:48:04 - INFO: Completed in 0.002 seconds.
-5. As of 0.05, NodeInterval now supports watching multiple input and output files. Just use an array to specify filenames under =inputFile= and =outputFile=. This is good, for example, where you have two sets of html files, one for uncompressed js and css and one for compressed css and js, and you want both files to render your templates on change.
+4. Supports watching multiple sets of input and output files. 
+5. Clean, date-stamped, and color-coded command-line output:
+: $ node nodeinterval.js
+: 18 Aug 01:47:49 - INFO: NodeInterval is watching for changes. Press Ctrl-C to stop.
+: 18 Aug 01:47:49 - INFO: overwrite ../assets/index.html
+: 18 Aug 01:47:49 - INFO: Completed in 0.001 seconds.
+: 18 Aug 01:48:04 - INFO: >>> Change detected to: ~/git/projectName/src/templates/signon/signon.tmpl
+: 18 Aug 01:48:04 - INFO: overwrite ../assets/index.html
+: 18 Aug 01:48:04 - INFO: Completed in 0.002 seconds.
 
 * Requirements
 - You must have [[http://nodejs.org/][nodejs]] installed.
@@ -85,6 +85,8 @@ Once a new =Nodeinterval.Watcher= is created. It has the additional api methods:
 | startWatch  | All files in =watchFolder= are now being watched.                                                                      |
 | stopWatch   | All files in =watchFolder= are now not being watched.                                                                  |
 | updateIndex | Force =outputFile= to be refreshed with =inputFile=, with =replacementString= replaced with contents of =watchFolder=. |
+
+NodeInterval can also watch multiple input and output files. Just use an array to specify filenames under =inputFile= and =outputFile=. This is good, for example, where you have two sets of html files, one for uncompressed js and css and one for compressed css and js, and you want both files to render your templates on change.
 
 * Sample web application layout
 
