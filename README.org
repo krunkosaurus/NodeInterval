@@ -13,13 +13,13 @@ detects a change it concats all the templates together and inserts them into a
 specific area of a chosen webpage. Leave NodeInterval running in a seperate tab
 as you work on your project.
 
-NodeInterval is commonly used in [[http://documentcloud.github.com/backbone/][backbone.js]], [[http://maccman.github.com/spine/][spine.js]], or other web app
+NodeInterval is commonly used in [[http://documentcloud.github.com/backbone/][backbone.js]], [[http://maccman.github.com/spine/][spine.js]], and other web app
 frameworks where you're using JavaScript templates so that templates are out of
 your html page and into organized folders.
 
 Think of it as a simple version of [[http://sass-lang.com/][Sass]] for your JavaScript templates.
 
-NodeInterval can also be used generically to cancat any type of file into any
+NodeInterval can also be used generically to concat any type of file into any
 time of document.
 
 * Features
@@ -28,16 +28,15 @@ time of document.
 2. Hidden files (files that begin with "." like .git, .svn, and .DS_Store) are automatically ignored in template directories.
 3. Profiles the time it takes to render all templates.
 4. Clean, date-stamped, and color-coded command-line output:
+        : $ node nodeinterval.js
+        : 18 Aug 01:47:49 - INFO: NodeInterval is watching for changes. Press Ctrl-C to stop.
+        : 18 Aug 01:47:49 - INFO: overwrite ../assets/index.html
+        : 18 Aug 01:47:49 - INFO: Completed in 0.001 seconds.
+        : 18 Aug 01:48:04 - INFO: >>> Change detected to: ~/git/projectName/src/templates/signon/signon.tmpl
+        : 18 Aug 01:48:04 - INFO: overwrite ../assets/index.html
+        : 18 Aug 01:48:04 - INFO: Completed in 0.002 seconds.
+5. As of 0.05, NodeInterval now supports watching multiple input and output files. Just use an array to specify filenames under =inputFile= and =outputFile=. This is good, for example, where you have two sets of html files, one for uncompressed js and css and one for compressed css and js, and you want both files to render your templates on change.
 
-: $ node nodeinterval.js
-: 18 Aug 01:47:49 - INFO: NodeInterval is watching for changes. Press Ctrl-C to stop.
-: 18 Aug 01:47:49 - INFO: overwrite ../assets/index.html
-: 18 Aug 01:47:49 - INFO: Completed in 0.001 seconds.
-: 18 Aug 01:48:04 - INFO: >>> Change detected to: ~/git/projectName/src/templates/signon/signon.tmpl
-: 18 Aug 01:48:04 - INFO: overwrite ../assets/index.html
-: 18 Aug 01:48:04 - INFO: Completed in 0.002 seconds.
-
-5. As of 0.05, NodeInterval now supports watching multiple input and output files. Just use an array to specify filenames under =inputFile= and =outputFile=. This is good, for example. where you have two sets of html files, one for uncompressed js and css and one for compressed css and js, and you want both files to render your templates on change.
 * Requirements
 - You must have [[http://nodejs.org/][nodejs]] installed.
 - [[http://npmjs.org/][NPM]] (Node package Manager) if you want to install this package using it.
