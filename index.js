@@ -61,7 +61,7 @@ var fs = require('fs'),
             return this;
         },
 
-        // Recursively return an array of all files in a directory.
+        // Recursively return an array of all files (paths) in a directory.
         getFilesFrom: function(dir){
             var filesAr = [];
             var recurse;
@@ -114,17 +114,41 @@ var fs = require('fs'),
         // Update target page with new templates.
         updateIndex: function(){
             var date = new Date();
-            var filesAr = this.getFilesFrom(this.watchFolder);
-            var content = this.stringFromFiles(filesAr);
+            // Ar of sorted ids from each template.
+            var idsAr = [];
+            // Lookup hash of ids to template content.
+            var fileHash = {};
+            // Final concated text content.
+            var content = '';
             var template;
-            var i;
+            var f;
+
+            // For each file get its template id so we can sort alphabetically.
+            _.each(this.getFilesFrom(this.watchFolder), function(file, i, list){
+                var contents = this.getFileContents(file);
+                var id = contents.match(/id=['"](.*)['"]/);
+                if (id){
+                    id = id[1];
+                    // Add to filehash
+                    fileHash[id] = contents;
+                    idsAr.push(id);
+                }else{
+                    throw new Error('Template missing id: ' +  file);
+                }
+            }, this);
+
+            idsAr.sort();
+
+            _.each(idsAr, function(id){
+                content += fileHash[id];
+            });
 
             if (this.outputFile instanceof Array){
-                for (i = 0; i < this.outputFile.length; i++){
-                    template = this.getFileContents(this.inputFile[i]);
+                for (f = 0; f < this.outputFile.length; f++){
+                    template = this.getFileContents(this.inputFile[f]);
                     template = template.replace(this.replacementString, content);
 
-                    this.writeToFile(this.outputFile[i], template);
+                    this.writeToFile(this.outputFile[f], template);
                 }
             }else{
                 template = this.getFileContents(this.inputFile);
@@ -132,7 +156,6 @@ var fs = require('fs'),
 
                 this.writeToFile(this.outputFile, template);
             }
-
 
             log.info('Completed in ' + ((new Date() - date) / 1000) + ' seconds.');
         }
