@@ -8,10 +8,12 @@
 
 * What it does
 
-When ran, NodeInterval watches a directory of js templates for changes. When it
-detects a change it concats all the templates together and inserts them into a
-specific area of a chosen webpage. Leave NodeInterval running in a seperate tab
-as you work on your project.
+NodeInterval allows you to move your JavaScript templates from your html
+page into organized files / folders. When ran, NodeInterval watches this 
+directory for changes. When it detects a change it concats all templates
+together and inserts them into your document. 
+
+Leave NodeInterval running in a seperate tab as you work on your project.
 
 NodeInterval is commonly used in [[http://documentcloud.github.com/backbone/][backbone.js]], [[http://maccman.github.com/spine/][spine.js]], and other web app
 frameworks where you're using JavaScript templates so that templates are out of
@@ -21,7 +23,7 @@ Think of it as a simple version of [[http://sass-lang.com/][Sass]] for your Java
 
 * Features
 
-1. Works with all templating solutions including [[http://documentcloud.github.com/underscore/][underscore.js]] and [[http://api.jquery.com/category/plugins/templates/][jQuery templates]]. (The only requirement is that the template needs to have an id property.)
+1. Works with all templating solutions including [[http://documentcloud.github.com/underscore/][underscore.js]] and [[http://api.jquery.com/category/plugins/templates/][jQuery templates]]. (The only requirement is that the template needs to have an id property since they are oganized alphabetically.)
 2. Hidden files (files that begin with "." like .git, .svn, and .DS_Store) are automatically ignored in template directories.
 3. Profiles the time it takes to render all templates.
 4. Supports watching multiple sets of input and output files.
