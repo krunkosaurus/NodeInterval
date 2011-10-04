@@ -127,6 +127,10 @@ If you don't have a good web application layout. Here's a good one to follow:
   - New APIs: .startWatch, .stopWatch
   - Added [[http://vowsjs.org/][Vows]] unit tests. (=cd tests; node run-tests.js= to run)
 - 2011-08-18 - 0.0.1 - First version
+
+* Known issues:
+- NodeInterval currently doesn't watch for new files or know when an existing file is removed. You should probably stop (ctrl-c) and start NodeInterval again when adding or removing a new template. This feature will be added in a future version.
+
 * Thanks
 
 Internally NodeInterval uses the following (included) node packages:
