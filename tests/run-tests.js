@@ -47,7 +47,7 @@ function init(){
                 return ni;
             },
             'Assert that we are listening to all files, in all sub dirs, and ignoring .dot files..': function(topic){
-                assert.length(topic.watchFiles, 9);
+                assert.length(topic.watchFiles, 10);
             },
             'Assert that passed options are stored in ni.options': function(topic){
                 assert.isObject(topic.options);
@@ -87,6 +87,7 @@ function init(){
                 // Revert change
                 console.log('Tests done. Reverting changes...');
                 fs.writeFileSync(watchFolder + 'template01.tmpl', '<script type="text/template" id="template-01">\n\tThis is my template 01.\n</script>', 'utf8');
+                ni.stopWatch();
             }
         }
     }).run();

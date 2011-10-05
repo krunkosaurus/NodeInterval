@@ -16,25 +16,19 @@ var fs = require('fs'),
         _.each(this.getFilesFrom(this.watchFolder), function(file){
             that.watchFiles.push(file);
         });
+
         // Also watch the input file for changes.
         // TODO: If inputFile changes, unwatch removed file, or watch new file.
         if (options.inputFile instanceof Array){
             _.each(options.inputFile, function(file){
-                watch.add(file);
+                that.watchFiles.push(file);
             });
         }else{
-            watch.add(options.inputFile);
+            this.watchFiles.push(options.inputFile);
         }
-
-        // Start the watch change listener.
-        watch.onChange(function(file, prevTime, currTime){
-            log.info('>>> Change detected to:', file);
-            that.updateIndex();
-        });
 
         // Render files on start.
         log.log_level = 'info';
-        log.info('NodeInterval is watching for changes. Press Ctrl-C to stop.');
         this.updateIndex();
         return this;
     }
@@ -48,13 +42,25 @@ var fs = require('fs'),
         },
 
         startWatch: function(){
+            var that = this;
+
             _.each(this.watchFiles, function(file){
                 watch.add(file);
+            });
+
+            log.info('NodeInterval is watching for changes. Press Ctrl-C to stop.');
+
+            // Start the watch change listener.
+            watch.onChange(function(file, prevTime, currTime){
+                log.info('>>> Change detected to:', file);
+                that.updateIndex();
             });
             return this;
         },
 
         stopWatch: function(){
+            watch.clearListeners();
+
             _.each(this.watchFiles, function(file){
                 watch.remove(file);
             });
