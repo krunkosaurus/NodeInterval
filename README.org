@@ -8,26 +8,28 @@
 
 * What it does
 
-NodeInterval allows you to move your JavaScript templates from your html
-page into organized files / folders. When ran, NodeInterval watches this 
-directory for changes. When it detects a change it concats all templates
-together and inserts them into your document. 
+NodeInterval allows you to move your JavaScript templates out of your html
+page and into organized files and folders. When ran, it collects all the files
+in your templates folders, orders them alphabetically by script id, and inserts
+them into a document of your choice.
 
-Leave NodeInterval running in a seperate tab as you work on your project.
+NodeInterval contains a watch option that enables you to leave it running in a
+seperate tab to automatically run the above process anytime a template has been
+modified.
 
-NodeInterval is commonly used in [[http://documentcloud.github.com/backbone/][backbone.js]], [[http://maccman.github.com/spine/][spine.js]], and other web app
-frameworks where you're using JavaScript templates so that templates are out of
-your html page and into organized folders.
+NodeInterval is commonly used in [[http://documentcloud.github.com/backbone/][Backbone]], [[http://maccman.github.com/spine/][Spine]], and similiar web application
+frameworks that rely heavily on embedded templates.
 
 Think of it as a simple version of [[http://sass-lang.com/][Sass]] for your JavaScript templates.
 
 * Features
 
 1. Works with all templating solutions including [[http://documentcloud.github.com/underscore/][underscore.js]] and [[http://api.jquery.com/category/plugins/templates/][jQuery templates]]. (The only requirement is that the template needs to have an id property since they are oganized alphabetically.)
-2. Hidden files (files that begin with "." like .git, .svn, and .DS_Store) are automatically ignored in template directories.
+2. Hidden files inside of template folder (files that begin with "." like .git, .svn, and .DS_Store) are automatically ignored.
 3. Profiles the time it takes to render all templates.
-4. Supports watching multiple sets of input and output files.
-5. Clean, date-stamped, and color-coded command-line output:
+4. Supports multiple sets of input and output files (see example in =sample/nodeinterval.js=).
+5. Can be used with automation tools like [[http://www.gnu.org/software/make/][Gnu Make]] and [[http://ant.apache.org/][Apache Ant]].
+6. Has clean, date-stamped, and color-coded command-line output:
 : $ node nodeinterval.js
 : 18 Aug 01:47:49 - INFO: NodeInterval is watching for changes. Press Ctrl-C to stop.
 : 18 Aug 01:47:49 - INFO: overwrite ../assets/index.html
@@ -39,12 +41,15 @@ Think of it as a simple version of [[http://sass-lang.com/][Sass]] for your Java
 * Requirements
 - You must have [[http://nodejs.org/][nodejs]] installed.
 - [[http://npmjs.org/][NPM]] (Node package Manager) if you want to install this package using it.
-* To install
+* Installing and using
 
-There are two ways to install. Cloning this repo or using [[http://npmjs.org/][npm]]. If you want to
-run the unit tests, you must clone this repo. Once you have the package
-installed feel free to modify and use the sample script in the =samples=
-directory:
+Note: Your application should have a clean folders architecture differentiating
+compiled vs source files. See the section below on "Sample web application
+layout" for a decent one. It's a lot simpler than it sounds.
+
+There are two ways to install: Cloning this repo or using [[http://npmjs.org/][npm]]. Once you have the
+package installed feel free to modify and use the sample script in the =samples=
+directory.
 
 :    cd bin # Your scripts directory.
 :    npm install NodeInterval
@@ -59,6 +64,9 @@ run it like so:
 : node nodeinterval.js
 
 * Usage
+
+It's best to create a Node or shell script that you can call via command line. A
+copy of this example is included in the =samples= directory.
 
 : var Nodeinterval = require('nodeinterval'),
 : ni = new Nodeinterval.Watcher({
@@ -77,15 +85,20 @@ Options you can pass to =new Nodeinterval.Watcher= are:
 | =replacementString= | is the string inside of =inputFile= that you want to replace with all your templates.                                                                        | '@templates@'          |
 | =watchFolder=       | is the relative or absolute path to the folder you want to monitor.                                                                                          | '../src/templates/'    |
 
-Once a new =Nodeinterval.Watcher= is created. It has the additional api methods:
+Once a new =Nodeinterval.Watcher= is created. It has the additional api methods. Some methods are chainable.
 
-| Method      | Description                                                                                                            |
-|-------------+------------------------------------------------------------------------------------------------------------------------|
-| startWatch  | All files in =watchFolder= are now being watched.                                                                      |
-| stopWatch   | All files in =watchFolder= are now not being watched.                                                                  |
-| updateIndex | Force =outputFile= to be refreshed with =inputFile=, with =replacementString= replaced with contents of =watchFolder=. |
+| Method      | Description                                                                                                                                                                    |
+|-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| startWatch  | Turns on the monitoring service. All files in =watchFolder= are now being watched for changes. Chainable.                                                                      |
+| stopWatch   | All files in =watchFolder= are now not being watched. Chainable.                                                                                                               |
+| updateIndex | This is called internally anytime a change is detected. Replaces =outputFile= with a version of  =inputFile= with =replacementString= replaced with contents of =watchFolder=. |
+|             |                                                                                                                                                                                |
 
-NodeInterval can also watch multiple input and output files. Just use an array to specify filenames under =inputFile= and =outputFile=. This is good, for example, where you have two sets of html files, one for uncompressed js and css and one for compressed css and js, and you want both files to render your templates on change.
+NodeInterval can also watch multiple input and output files. Just use an array
+to specify filenames under =inputFile= and =outputFile=. This is good, for
+example, where you have two sets of html files, one for uncompressed js and css
+and one for compressed css and js, and you want both files to render your
+templates on change.
 
 * Sample web application layout
 
@@ -104,7 +117,7 @@ If you don't have a good web application layout. Here's a good one to follow:
 : │   ├── nodeinterval.sh  <== This sample file (and the .js) version is inside
 : │   │                        of nodeinterval/samples/. Use it if you like.
 : │   └── sasswatch.sh     <== I like to create a Sass executable for watching
-: │                            my CSS files. (not part of this project)
+: │                            my CSS files as well. (not part of this project)
 : └── src                  <== Raw uncompressed code here, where you should be
 :     │                        editing your codez.
 :     ├── index.html       <== Raw index.html files with "replacementString"
@@ -116,7 +129,18 @@ If you don't have a good web application layout. Here's a good one to follow:
 :                              according to section. Incude the <script> part
 :                              in your templates.
 
+* Running the unit tests
+- NodeInterval's unit tests are written using [[http://vowsjs.org/][Vows]].
+- If you want to run the unit tests, you must clone this repo and not use the NPM version.
+
+: cd tests; node run-tests.js
+
 * Change log
+- 2011-10-05 - 0.0.7
+  - NodeInterval no longer starts the watch process until you run =NodeInterval.startWatch=. This way NodeInterval can be used in Make files and other automation scripts that don't require a monitoring service.
+  - Update sample scripts to contain a --watch option to to opt in on monitoring files. If not specified runs only once and quits.
+  - Update unit-tests to support the above.
+  - Turn off monitoring in unit-tests when the test is done.
 - 2011-09-18 - 0.0.6
   - Templates are now outputted in alphabetical order by script id. This adds consistency to commit diffs among other things.
 - 2011-09-18 - 0.0.5
