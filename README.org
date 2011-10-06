@@ -28,7 +28,7 @@ Think of it as a simple version of [[http://sass-lang.com/][Sass]] for your Java
 2. Hidden files inside of template folder (files that begin with "." like .git, .svn, and .DS_Store) are automatically ignored.
 3. Profiles the time it takes to render all templates.
 4. Supports multiple sets of input and output files (see example in =sample/nodeinterval.js=).
-5. Can be used with automation tools like [[http://www.gnu.org/software/make/][Gnu Make]] and [[http://ant.apache.org/][Apache Ant]].
+5. Can be used with build tools like [[http://www.gnu.org/software/make/][Gnu Make]] and [[http://ant.apache.org/][Apache Ant]].
 6. Has clean, date-stamped, and color-coded command-line output:
 : $ node nodeinterval.js
 : 18 Aug 01:47:49 - INFO: NodeInterval is watching for changes. Press Ctrl-C to stop.
@@ -137,8 +137,8 @@ If you don't have a good web application layout. Here's a good one to follow:
 
 * Change log
 - 2011-10-05 - 0.0.7
-  - NodeInterval no longer starts the watch process until you run =NodeInterval.startWatch=. This way NodeInterval can be used in Make files and other automation scripts that don't require a monitoring service.
-  - Update sample scripts to contain a --watch option to to opt in on monitoring files. If not specified runs only once and quits.
+  - NodeInterval now works with build tools like [[http://www.gnu.org/software/make/][Make]] and [[http://ant.apache.org/][Ant]]. To support this  NodeInterval no longer starts the watch process until =NodeInterval.startWatch= is ran.
+  - Update sample scripts to contain a --watch option to opt in on monitoring files. If not specified runs only once and quits.
   - Update unit-tests to support the above.
   - Turn off monitoring in unit-tests when the test is done.
 - 2011-09-18 - 0.0.6
