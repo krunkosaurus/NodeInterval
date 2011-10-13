@@ -8,10 +8,10 @@
 
 * What it does
 
-NodeInterval allows you to move your JavaScript templates out of your html
-page and into organized files and folders. When ran, it collects all the files
-in your templates folders, orders them alphabetically by script id, and inserts
-them into a document of your choice.
+NodeInterval promotes code organization by allowing you to move your JavaScript 
+templates out of your html page and into organized files and folders. When ran,
+it collects all the files in your templates folders, orders them alphabetically
+by script id, and inserts them into a text document(s) of your choice.
 
 NodeInterval contains a watch option that enables you to leave it running in a
 seperate tab to automatically run the above process anytime a template has been
