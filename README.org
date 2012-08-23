@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/krunkosaurus/NodeInterval.png)](http://travis-ci.org/krunkosaurus/NodeInterval)
 :                  _      _       _                       _
 :  _ __   ___   __| | ___(_)_ __ | |_ ___ _ ____   ____ _| |
 : | '_ \ / _ \ / _` |/ _ \ | '_ \| __/ _ \ '__\ \ / / _` | |
